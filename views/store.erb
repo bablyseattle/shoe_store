@@ -1,0 +1,22 @@
+<h1><%= @store.name %></h1>
+
+<h3>Brands:</h3>
+
+<%if @list.any?  %>
+	<% @list.each do |item| %>
+	<li><%= item.name %> -   <%= item.price %></li>
+		
+	<%end%>
+	<% else%>
+	<p>There are no brands in this store!</p>
+<% end%>
+
+<br><br><br>
+
+<form action="/add_brand" method="post" class="form-inline">
+	<label class="sr-only" for="inlineFormInput">Name</label>
+	<input type="text" name="brand_name" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Brand Name">
+	<label class="sr-only" for="inlineFormInput">Price</label>
+	<input type="text" name="price" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Price in $">
+	<button type="submit" class="btn btn-primary">Add brand</button>
+</form>
