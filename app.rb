@@ -29,6 +29,19 @@ post('/add_brand') do
 	brand.save
 	redirect ('/')
 end
+post('/add_brand_to_store') do
+	brands = []
+	brand_ids = params['check']
+	@store = Store.find(params["store_id"])
+	brand_ids.each do |id|
+		brands.push(Brand.find (id.to_i))
+	end
+	brands.each do |brand|
+		@store.brands.push(brand)
+	end
+	redirect "/store/#{@store.id}"
+end
+
 delete('/delete_store/:id') do
 	store = Store.find(params[:id])
 	store.destroy

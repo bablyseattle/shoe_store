@@ -15,13 +15,15 @@
 		<br><br><br>
 		<h3>Add brands to this store</h3>
 		<form action="/add_brand_to_store" method="post" class="form-inline">
+			<input type="hidden" name="store_id" value="<%= @store.id %>">
 			<%if @brands.any?  %>
 				<% @brands.each do |item| %>
-				<input type="checkbox" name="brand" value="<% item.id %>"><%= item.name %> <br>
+				<input type="checkbox" name="check[]" value="<%= item.id %>"><%= item.name %> <br>
 					
 				<%end%>
+
 				<% else%>
-				<p>There are no brands in this store!</p>
+				<p>There are no brands available to add</p>
 			<% end%>
 
 			<button type="submit" class="btn btn-primary">Add brand</button>
