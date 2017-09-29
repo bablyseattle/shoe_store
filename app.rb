@@ -3,7 +3,8 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
-	@list = Store.all
+	@list_store = Store.all
+	@list_brand = Brand.all
 	erb :index
 end
 
@@ -16,6 +17,7 @@ end
 
 get('/store/:id') do
 	@store = Store.find(params[:id])
+	@brands = Brand.all
 	@list = @store.brands
 	erb :store
 end
@@ -25,12 +27,17 @@ post('/add_brand') do
 	price = params["price"]
 	brand = Brand.new({:name => name, :price => price})
 	brand.save
-	store = Store.find(params["store_id"])
-	store.brands.push(brand)
-	redirect back
+	redirect ('/')
 end
 delete('/delete_store/:id') do
-	@store = Store.find(params[:id])
-	@store.destroy
+	store = Store.find(params[:id])
+	store.destroy
 	redirect '/'
+end
+
+patch('/update_store/:id') do
+	@store = Store.find(params[:id])
+	@store.name = params["name"]
+	@store.save
+	redirect "/store/#{@store.id}"
 end

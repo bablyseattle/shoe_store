@@ -1,18 +1,46 @@
-<h3>All stores:</h3>
+<div class="row">
+	<div class="col-md-6">
+		<h3>All stores:</h3>
 
-<%if @list.any?  %>
-	<% @list.each do |item| %>
-	<li><a href="store/<%= item.id %>"><%= item.name %></a> </li>
+		<%if @list_store.any?  %>
+			<% @list_store.each do |item| %>
+			<li><a href="store/<%= item.id %>"><%= item.name %></a> </li>
+				
+			<%end%>
+			<% else%>
+			<p>There are no stores in list!</p>
+		<% end%>
+
+		<br><br><br>
+
+		<form action="/add_store" method="post" class="form-inline">
+			<label class="sr-only" for="inlineFormInput">Name</label>
+			<input type="text" name="store_name" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Store Name">
+			<button type="submit" class="btn btn-primary">Add store</button>
+		</form>
 		
-	<%end%>
-	<% else%>
-	<p>There are no stores in list!</p>
-<% end%>
+	</div>
+	<div class="col-md-6">
+		<h3>All brands:</h3>
 
-<br><br><br>
+		<%if @list_brand.any?  %>
+			<% @list_brand.each do |item| %>
+			<li><%= item.name %> -   <%= item.price %></li>
+				
+			<%end%>
+			<% else%>
+			<p>There are no brands in this store!</p>
+		<% end%>
 
-<form action="/add_store" method="post" class="form-inline">
-	<label class="sr-only" for="inlineFormInput">Name</label>
-	<input type="text" name="store_name" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Store Name">
-	<button type="submit" class="btn btn-primary">Add store</button>
-</form>
+		<br><br><br>
+
+		<form action="/add_brand" method="post" class="form-inline">
+			<label class="sr-only" for="inlineFormInput">Name</label>
+			<input type="text" name="brand_name" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Brand Name">
+			<label class="sr-only" for="inlineFormInput">Price</label>
+			<input type="text" name="price" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Price in $">
+			<button type="submit" class="btn btn-primary">Add brand</button>
+		</form>
+	</div>
+</div>
+
