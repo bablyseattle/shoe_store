@@ -1,0 +1,14 @@
+<h3>All stores:</h3>
+
+<%if @list.any?  %>
+	<% @list.each do |item| %>
+	<li><%= item.name%></li>
+		
+	<%end%>
+	<% else%>
+	<p>There are no stores in list!</p>
+<% end%>
+
+<form action="/add_store" method="post">
+	
+</form>
