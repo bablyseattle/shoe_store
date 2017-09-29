@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
 	has_and_belongs_to_many(:stores)
 	
-validates(:name, {:presence => true, :uniqueness => true, :length => { :maximum => 100 }})
+validates(:name, {:presence => true, uniqueness: { case_sensitive: false }, :length => { :maximum => 100 }})
   	before_save(:capitalizes_name, {})
 
   	private
@@ -10,4 +10,7 @@ validates(:name, {:presence => true, :uniqueness => true, :length => { :maximum 
 		    name = self.name.split(" ")
 		    self.name = name.map{ |word| word.upcase }.join(" ")
 		end
+
+		private
+
 end

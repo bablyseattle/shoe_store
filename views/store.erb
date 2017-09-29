@@ -5,7 +5,7 @@
 
 		<%if @list.any?  %>
 			<% @list.each do |item| %>
-			<li><%= item.name %> -   <%= item.price %></li>
+			<li><%= item.name %><span>      $</span><%= item.price %></li>
 				
 			<%end%>
 			<% else%>
@@ -18,7 +18,7 @@
 			<input type="hidden" name="store_id" value="<%= @store.id %>">
 			<%if @brands.any?  %>
 				<% @brands.each do |item| %>
-				<input type="checkbox" name="check[]" value="<%= item.id %>"><%= item.name %> <br>
+				<input type="checkbox" name="check[]" value="<%= item.id %>"><%= item.name %> <span>      $</span><%= item.price %> <br>
 					
 				<%end%>
 

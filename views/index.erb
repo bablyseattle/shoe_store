@@ -1,3 +1,13 @@
+<div class="nav nav-justified navbar-nav">
+    <form class="navbar-form navbar-search" role="sort" action="/" method="post">
+        <button type="submit" class="btn btn-search btn-danger">
+         <span class="glyphicon glyphicon-arrow-up"></span>
+         <span class="label-icon">Sort by price</span>
+         </button>
+    </form>
+  </div>
+
+
 <div class="row">
 	<div class="col-md-6">
 		<h3>All stores:</h3>
@@ -25,7 +35,7 @@
 
 		<%if @list_brand.any?  %>
 			<% @list_brand.each do |item| %>
-			<li><%= item.name %> -   <%= item.price %></li>
+			<p><%= item.name %><span>      $</span><%= item.price %></p>
 				
 			<%end%>
 			<% else%>
@@ -38,7 +48,9 @@
 			<label class="sr-only" for="inlineFormInput">Name</label>
 			<input type="text" name="brand_name" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Brand Name">
 			<label class="sr-only" for="inlineFormInput">Price</label>
-			<input type="text" name="price" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Price in $">
+			<div class="input-group mb-2 mb-sm-0">
+			<div class="input-group-addon">$</div>
+			<input type="text" name="price" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Price"></div>
 			<button type="submit" class="btn btn-primary">Add brand</button>
 		</form>
 	</div>

@@ -1,0 +1,11 @@
+.navbar-form {
+	float: right;
+}
+.well{
+	background-color: #35e0a4;
+	padding: 50px;
+}
+
+li{
+	list-style: none;
+}
