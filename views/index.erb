@@ -2,13 +2,17 @@
 
 <%if @list.any?  %>
 	<% @list.each do |item| %>
-	<li><%= item.name%></li>
+	<li><a href="store/<%= item.id %>"><%= item.name %></a> </li>
 		
 	<%end%>
 	<% else%>
 	<p>There are no stores in list!</p>
 <% end%>
 
-<form action="/add_store" method="post">
-	
+<br><br><br>
+
+<form action="/add_store" method="post" class="form-inline">
+	<label class="sr-only" for="inlineFormInput">Name</label>
+	<input type="text" name="store_name" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Store Name">
+	<button type="submit" class="btn btn-primary">Add store</button>
 </form>
