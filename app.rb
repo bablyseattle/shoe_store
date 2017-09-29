@@ -25,5 +25,12 @@ post('/add_brand') do
 	price = params["price"]
 	brand = Brand.new({:name => name, :price => price})
 	brand.save
+	store = Store.find(params["store_id"])
+	store.brands.push(brand)
 	redirect back
+end
+delete('/delete_store/:id') do
+	@store = Store.find(params[:id])
+	@store.destroy
+	redirect '/'
 end
