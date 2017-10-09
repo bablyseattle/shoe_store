@@ -4,4 +4,4 @@ development:
 
 test:
   adapter: postgresql
-database: shoe_store_test
+  database: shoe_store_test
